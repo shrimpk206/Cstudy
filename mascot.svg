@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" class="mascot-svg" aria-hidden="true">
+  <!-- 두부 몸통 -->
+  <rect x="20" y="30" width="80" height="75" rx="14" fill="#6ba6ff" stroke="#4070cc" stroke-width="3"/>
+  <!-- 윗면 하이라이트 -->
+  <rect x="24" y="34" width="72" height="10" rx="6" fill="#a5c7ff" opacity="0.6"/>
+  <!-- 발 -->
+  <rect x="32" y="103" width="14" height="10" rx="3" fill="#4070cc"/>
+  <rect x="74" y="103" width="14" height="10" rx="3" fill="#4070cc"/>
+  <!-- 볼 (홍조) -->
+  <ellipse class="mascot-cheek" cx="34" cy="70" rx="6" ry="4" fill="#ff8fa3" opacity="0.7"/>
+  <ellipse class="mascot-cheek" cx="86" cy="70" rx="6" ry="4" fill="#ff8fa3" opacity="0.7"/>
+
+  <!-- 기본 표정: 눈 (idle/happy) -->
+  <g class="mascot-face mascot-face--idle">
+    <circle cx="44" cy="60" r="4" fill="#0f0f10"/>
+    <circle cx="76" cy="60" r="4" fill="#0f0f10"/>
+    <path d="M 48 78 Q 60 86 72 78" fill="none" stroke="#0f0f10" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- 기쁜 표정 (^^ + 활짝 웃음) -->
+  <g class="mascot-face mascot-face--happy" style="display:none">
+    <path d="M 40 60 Q 44 54 48 60" fill="none" stroke="#0f0f10" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 72 60 Q 76 54 80 60" fill="none" stroke="#0f0f10" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 44 76 Q 60 92 76 76 L 70 76 Q 60 84 50 76 Z" fill="#0f0f10"/>
+  </g>
+
+  <!-- 시무룩 표정 -->
+  <g class="mascot-face mascot-face--sad" style="display:none">
+    <circle cx="44" cy="62" r="4" fill="#0f0f10"/>
+    <circle cx="76" cy="62" r="4" fill="#0f0f10"/>
+    <path d="M 48 84 Q 60 76 72 84" fill="none" stroke="#0f0f10" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

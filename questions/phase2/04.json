@@ -1,0 +1,61 @@
+{
+  "lessonId": "phase2/04",
+  "title": "타입과 널",
+  "version": 1,
+  "exercises": [
+    {
+      "id": "p2-04-q01",
+      "type": "mcq",
+      "prompt": "다음 코드의 결과는?\n\n```js\n\"10\" + 5\n```",
+      "choices": ["15", "\"105\"", "에러", "undefined"],
+      "answer": 1,
+      "explain": "`+` 연산자는 한쪽이 string이면 글자 붙이기로 작동합니다. `\"10\"` + `5` → `\"105\"` (문자열). 폼 입력처럼 외부에서 받은 값은 항상 string이므로 계산 전에 `Number()`로 변환하세요."
+    },
+    {
+      "id": "p2-04-q02",
+      "type": "wordbank",
+      "prompt": "user가 undefined일 가능성이 있을 때 안전하게 name을 꺼내려면?\n\n```js\nuser___name\n```",
+      "blanks": 1,
+      "bank": ["?.", ".", "->", "::"],
+      "answer": ["?."],
+      "explain": "옵셔널 체이닝 `?.` 은 좌변이 `null`/`undefined`일 때 에러 대신 `undefined`를 반환합니다. 외부 데이터(API 응답, 폼 입력)를 다룰 때 가장 자주 쓰는 안전 장치."
+    },
+    {
+      "id": "p2-04-q03",
+      "type": "reorder",
+      "prompt": "안전하게 result.name을 출력하려면 줄 순서를 어떻게 해야 할까요?",
+      "lines": [
+        "const result = await getUser()",
+        "if (!result) return",
+        "console.log(result.name)"
+      ],
+      "answer": [0, 1, 2],
+      "explain": "1) 비동기로 받기 → 2) null 가드(없으면 일찍 종료) → 3) 안전하게 사용. 가드를 안 걸고 바로 `result.name`을 호출하면 `Cannot read properties of undefined` 에러가 납니다."
+    },
+    {
+      "id": "p2-04-q04",
+      "type": "bugspot",
+      "prompt": "버그가 있는 줄을 고르세요.",
+      "code": [
+        "const ageStr = formInput.value",
+        "const age = ageStr",
+        "if (age + 1 > 30) alert('성인')"
+      ],
+      "answer": 1,
+      "explain": "폼 입력값은 항상 string입니다. `ageStr`을 그대로 `age`에 할당하면 string. 그러면 `age + 1`이 `\"301\"` 같은 글자 붙이기가 됩니다. `const age = Number(ageStr)`로 변환해야 함."
+    },
+    {
+      "id": "p2-04-q05",
+      "type": "rubric",
+      "prompt": "다음 AI 프롬프트에 들어 있는 좋은 요소를 모두 고르세요.",
+      "scenario": "이 user 객체가 undefined일 가능성을 처리해줘. 옵셔널 체이닝(?.)을 적용하고, 빈 값이면 콘솔에 'no user' 출력하게.",
+      "items": [
+        { "label": "구체적 수단(?.) 명시", "correct": true },
+        { "label": "성공 조건(빈 값 → 콘솔 출력) 명시", "correct": true },
+        { "label": "기술 스택 명시", "correct": false },
+        { "label": "사용자(누가 쓰는지) 명시", "correct": false }
+      ],
+      "explain": "이 프롬프트는 **수단**(`?.`)과 **성공 조건**(빈 값 처리)이 명확합니다. 반면 **기술 스택**(React인지 Node인지)과 **사용자 정의**는 빠져 있습니다. 둘 다 빠져도 작은 작업엔 충분하지만, 큰 작업이면 추가하는 게 좋습니다."
+    }
+  ]
+}
