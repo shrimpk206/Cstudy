@@ -1,0 +1,67 @@
+{
+  "lessonId": "phase3/04",
+  "title": "스스로 검색하는 법",
+  "version": 1,
+  "exercises": [
+    {
+      "id": "p3-04-q01",
+      "type": "mcq",
+      "prompt": "다음 중 **검색 결과가 가장 많이 나올** 검색어는?",
+      "choices": [
+        "리액트 안 돼",
+        "Cannot read properties of undefined react useState",
+        "내 코드의 에러",
+        "myUserData가 이상해"
+      ],
+      "answer": 1,
+      "explain": "**영어 + 핵심 에러 메시지 + 라이브러리 이름**이 정답. 본인 변수명이나 한국어 검색은 결과가 적습니다. 영어 결과가 압도적으로 많아 영어로 검색하는 습관이 좋음."
+    },
+    {
+      "id": "p3-04-q02",
+      "type": "mcq",
+      "prompt": "Stack Overflow에서 답변을 평가할 때 **가장 신뢰할 만한 신호**는?",
+      "choices": [
+        "답변자의 프로필 사진",
+        "녹색 체크와 좌측 점수 (좋아요 수)",
+        "답변의 길이",
+        "답변의 색상"
+      ],
+      "answer": 1,
+      "explain": "**녹색 체크**: 질문자가 정답으로 채택. **좌측 점수**: 사람들의 추천 수. 점수가 채택보다 높으면 그게 더 정확할 때도 많음. **날짜도 확인** — 5년 전 답변은 옛날 문법일 수 있음."
+    },
+    {
+      "id": "p3-04-q03",
+      "type": "wordbank",
+      "prompt": "JavaScript 표준 기능(Array.map 등)에 대해 가장 신뢰할 만한 사이트는?\n\n```\n___\n```",
+      "blanks": 1,
+      "bank": ["MDN", "W3Schools", "Wikipedia", "Reddit"],
+      "answer": ["MDN"],
+      "explain": "**MDN (Mozilla Developer Network)**이 웹 표준의 공식 문서. `developer.mozilla.org`. W3Schools는 정보가 부정확하거나 옛날 방식이 많음. 라이브러리는 그 라이브러리의 공식 문서가 1순위."
+    },
+    {
+      "id": "p3-04-q04",
+      "type": "rubric",
+      "prompt": "검색 후 답을 적용할 때 좋은 습관은?",
+      "items": [
+        { "label": "그대로 복붙하지 않고 본인 코드에 어떻게 적용할지 AI에게 묻기", "correct": true },
+        { "label": "여러 답을 비교", "correct": true },
+        { "label": "날짜가 너무 오래된 답은 의심", "correct": true },
+        { "label": "첫 번째 답을 무조건 신뢰", "correct": false }
+      ],
+      "explain": "검색 결과는 **참고 자료**이지 정답이 아닙니다. 본인 코드 맥락에 맞춰 적용해야 함. AI에게 \"이 답[링크]이 우리 코드에 어떻게 적용돼?\"라고 묻는 패턴이 좋음."
+    },
+    {
+      "id": "p3-04-q05",
+      "type": "mcq",
+      "prompt": "라이브러리에 버그가 있어 보일 때 어디를 봐야 할까요?",
+      "choices": [
+        "라이브러리 코드를 직접 다 읽기",
+        "GitHub Issues 탭에서 비슷한 케이스 검색 (Closed 이슈 포함)",
+        "다른 라이브러리로 바로 갈아타기",
+        "AI에게 라이브러리를 다시 짜달라고"
+      ],
+      "answer": 1,
+      "explain": "**GitHub Issues** 탭에서 같은 증상을 누가 이미 겪었을 확률이 높습니다. **Closed**(닫힌) 이슈도 답이 있을 수 있으니 같이 보세요. 정말 라이브러리 버그면 새 이슈 등록도 가능."
+    }
+  ]
+}

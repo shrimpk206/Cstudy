@@ -1,0 +1,72 @@
+{
+  "lessonId": "phase4/04",
+  "title": "AI 결과물 검수",
+  "version": 1,
+  "exercises": [
+    {
+      "id": "p4-04-q01",
+      "type": "rubric",
+      "prompt": "AI 결과물 머지 전에 꼭 점검할 **보안 항목**은?",
+      "items": [
+        { "label": "API 키/비밀번호가 코드에 박혀있지 않은가", "correct": true },
+        { "label": ".gitignore에 .env가 있는가", "correct": true },
+        { "label": "사용자 입력을 그대로 DB/HTML에 넣고 있지 않은가 (SQL/XSS)", "correct": true },
+        { "label": "인증/권한 검사가 보호된 엔드포인트마다 있는가", "correct": true },
+        { "label": "코드 폰트가 예쁜가", "correct": false }
+      ],
+      "explain": "**보안은 가장 먼저** 봐야 합니다. AI는 키를 코드에 박거나, 인증 검사를 빼먹는 경우가 의외로 흔합니다. 머지 전 이 4개는 반드시."
+    },
+    {
+      "id": "p4-04-q02",
+      "type": "bugspot",
+      "prompt": "이 코드의 가장 큰 보안 문제는 어느 줄?",
+      "code": [
+        "const apiKey = 'sk-proj-Abc123Real'",
+        "async function getData(userId) {",
+        "  const res = await fetch(`/users/${userId}`)",
+        "  return res.json()",
+        "}"
+      ],
+      "answer": 0,
+      "explain": "1번째 줄 — **API 키가 코드에 박힘**. 환경변수로 빼야 함: `process.env.API_KEY`. 그리고 `.env`, `.gitignore` 설정. 이게 프론트엔드면 백엔드 거쳐야 함."
+    },
+    {
+      "id": "p4-04-q03",
+      "type": "bugspot",
+      "prompt": "이 코드는 XSS(Cross-Site Scripting) 공격에 취약합니다. 어느 줄이 위험한가요?",
+      "code": [
+        "const userInput = formInput.value",
+        "const message = '안녕, ' + userInput",
+        "document.getElementById('greet').innerHTML = message"
+      ],
+      "answer": 2,
+      "explain": "3번째 줄 — `innerHTML`에 사용자 입력을 직접 삽입하면 `<script>` 태그도 같이 들어가서 실행됩니다. **`textContent`** 또는 안전한 라이브러리(DOMPurify 등) 사용. React는 기본적으로 안전 (`dangerouslySetInnerHTML`만 주의)."
+    },
+    {
+      "id": "p4-04-q04",
+      "type": "rubric",
+      "prompt": "**흔한 버그**로 점검할 항목:",
+      "items": [
+        { "label": "null/undefined 처리 (외부 데이터)", "correct": true },
+        { "label": "에러 처리 (try/catch)", "correct": true },
+        { "label": "비동기 함수에 await 빠짐", "correct": true },
+        { "label": "타입 섞임 (string vs number)", "correct": true },
+        { "label": "들여쓰기 칸 수", "correct": false }
+      ],
+      "explain": "이 4개는 vibe coding 버그의 80%를 차지. 들여쓰기는 lint/formatter가 잡아줄 일."
+    },
+    {
+      "id": "p4-04-q05",
+      "type": "mcq",
+      "prompt": "본인이 다 검토할 시간이 없을 때 좋은 방법은?",
+      "choices": [
+        "그냥 머지",
+        "AI에게 \"보안/버그/성능/사용 안 된 코드 관점으로 리뷰해줘\"",
+        "테스트 없이 배포",
+        "검토 안 함"
+      ],
+      "answer": 1,
+      "explain": "AI에게 **본인이 짠 코드를 리뷰시킬 수 있습니다**. 관점을 명시하면 더 잘 봅니다: \"보안 취약점 / 흔한 버그 / 성능 / 사용 안 된 코드\". 단, 100% 신뢰하지 말고 의심 가는 부분은 본인이 한 번 더."
+    }
+  ]
+}

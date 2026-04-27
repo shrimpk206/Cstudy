@@ -1,0 +1,75 @@
+{
+  "lessonId": "phase2/09",
+  "title": "비동기",
+  "version": 1,
+  "exercises": [
+    {
+      "id": "p2-09-q01",
+      "type": "mcq",
+      "prompt": "다음 코드의 결과는?\n\n```js\nasync function getData() {\n  return 42\n}\nconsole.log(getData())\n```",
+      "choices": [
+        "42",
+        "Promise { 42 } (Promise 객체)",
+        "undefined",
+        "에러"
+      ],
+      "answer": 1,
+      "explain": "`async` 함수는 **항상 Promise를 반환**합니다. 값을 꺼내려면 `const x = await getData()` 또는 `getData().then(x => ...)`. `await`을 빼먹으면 `[object Promise]`가 찍히는 흔한 버그."
+    },
+    {
+      "id": "p2-09-q02",
+      "type": "bugspot",
+      "prompt": "이 코드는 의도대로 동작하지 않습니다. 어느 줄이 문제일까요?",
+      "code": [
+        "async function saveAll(users) {",
+        "  users.forEach(async user => {",
+        "    await save(user)",
+        "  })",
+        "  console.log('전부 저장됨')",
+        "}"
+      ],
+      "answer": 1,
+      "explain": "**`forEach` 안의 `await`은 작동하지 않습니다**. forEach는 Promise를 무시하고 즉시 넘어감. 결과: '전부 저장됨'이 저장 끝나기 **전에** 출력됨. `for...of` 루프 또는 `Promise.all(users.map(save))`을 써야 함."
+    },
+    {
+      "id": "p2-09-q03",
+      "type": "wordbank",
+      "prompt": "비동기 작업의 결과를 받기 위해 함수 앞에 무엇을 붙이나요?\n\n```js\nasync function getUser() {\n  ___ fetch('/api/user')\n}\n```",
+      "blanks": 1,
+      "bank": ["return", "await", "yield", "wait"],
+      "answer": ["return"],
+      "explain": "이 자리는 `await fetch(...)`나 `return fetch(...)`가 가능. 단순히 결과를 호출자에 전달하려면 `return`. fetch는 Promise를 반환하므로 그대로 return해도 됨."
+    },
+    {
+      "id": "p2-09-q04",
+      "type": "reorder",
+      "prompt": "비동기 함수에 안전한 에러 처리를 더하는 순서:",
+      "lines": [
+        "async function getUser() {",
+        "  try {",
+        "    const res = await fetch('/api/user')",
+        "    return await res.json()",
+        "  } catch (err) {",
+        "    console.error(err)",
+        "    return null",
+        "  }",
+        "}"
+      ],
+      "answer": [0, 1, 2, 3, 4, 5, 6, 7],
+      "explain": "비동기는 자주 실패합니다(네트워크 끊김 등). `try { await ... }` `catch (err) { ... }` 블록으로 감싸세요. 실패 시 무엇을 반환할지(여기선 `null`)도 정해두면 좋음."
+    },
+    {
+      "id": "p2-09-q05",
+      "type": "mcq",
+      "prompt": "`Promise.all([fetch(a), fetch(b), fetch(c)])`의 효과는?",
+      "choices": [
+        "세 요청을 차례로 (a 끝나고 b)",
+        "세 요청을 동시에 보내고 모두 끝나면 결과 배열",
+        "첫 번째 요청만 보냄",
+        "에러"
+      ],
+      "answer": 1,
+      "explain": "**Promise.all은 병렬 처리**. 세 요청이 동시에 나가서 시간이 짧아집니다. 한 줄씩 await하면 직렬이 되어 느려집니다. 단, 하나라도 실패하면 전체가 reject."
+    }
+  ]
+}

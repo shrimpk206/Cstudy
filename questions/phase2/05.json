@@ -1,0 +1,67 @@
+{
+  "lessonId": "phase2/05",
+  "title": "파일과 모듈",
+  "version": 1,
+  "exercises": [
+    {
+      "id": "p2-05-q01",
+      "type": "mcq",
+      "prompt": "다음 import의 의미는?\n\n```js\nimport React from \"react\"\n```",
+      "choices": [
+        "react 라이브러리에서 React를 default export로 가져옴",
+        "react 라이브러리에서 React라는 named export를 가져옴",
+        "현재 폴더의 react 파일을 가져옴",
+        "에러"
+      ],
+      "answer": 0,
+      "explain": "**중괄호 `{}`가 없으면 default export**. `react`는 외부 라이브러리(node_modules)에 있으니 상대경로 `./` 없음. 이름은 자유롭게 바꿔도 됩니다."
+    },
+    {
+      "id": "p2-05-q02",
+      "type": "mcq",
+      "prompt": "`import { useState } from \"react\"`의 의미는?",
+      "choices": [
+        "react에서 default export를 가져옴",
+        "react에서 useState라는 named export를 가져옴",
+        "react를 useState라는 이름으로 가져옴",
+        "react의 useState 폴더를 가져옴"
+      ],
+      "answer": 1,
+      "explain": "**중괄호 `{}`는 named export**. 이름을 그대로 적어야 함. `react` 라이브러리는 `useState`를 named export로 내보냅니다."
+    },
+    {
+      "id": "p2-05-q03",
+      "type": "wordbank",
+      "prompt": "현재 폴더의 utils.js 파일을 가져오려면?\n\n```js\nimport { add } from \"___utils.js\"\n```",
+      "blanks": 1,
+      "bank": ["./", "../", "/", ""],
+      "answer": ["./"],
+      "explain": "`./`은 현재 폴더, `../`는 상위 폴더, `/`는 루트, 아무것도 없으면 외부 라이브러리(node_modules)를 의미. 본인 파일을 가져올 땐 항상 `./` 또는 `../`."
+    },
+    {
+      "id": "p2-05-q04",
+      "type": "bugspot",
+      "prompt": "이 코드를 빌드하려고 하니 에러가 납니다. 어느 줄이 문제일까요?",
+      "code": [
+        "// utils.js",
+        "function add(a, b) { return a + b }",
+        "// main.js",
+        "import { add } from \"./utils.js\""
+      ],
+      "answer": 1,
+      "explain": "2번째 줄에서 `add`를 정의만 하고 **export**하지 않았습니다. `export function add(...)`로 바꿔야 다른 파일에서 import할 수 있습니다."
+    },
+    {
+      "id": "p2-05-q05",
+      "type": "rubric",
+      "prompt": "한 파일이 500줄 넘게 길어졌습니다. 좋은 대처는?",
+      "items": [
+        { "label": "기능별로 여러 파일로 쪼개고 import로 연결", "correct": true },
+        { "label": "공통 함수는 utils.js로 따로 빼기", "correct": true },
+        { "label": "그냥 그대로 두기", "correct": false },
+        { "label": "주석을 더 많이 달기", "correct": false }
+      ],
+      "explain": "파일이 너무 길면 **읽기/수정/협업이 어려움**. 기능별로 쪼개서 import로 엮는 게 정석. 주석을 다는 건 길이 문제를 해결하지 못합니다."
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "lessonId": "phase2/01",
+  "title": "데이터를 담는 그릇",
+  "version": 1,
+  "exercises": [
+    {
+      "id": "p2-01-q01",
+      "type": "mcq",
+      "prompt": "다음 중 **변수의 값을 나중에 바꿀 수 있는** 선언은?",
+      "choices": [
+        "const name = '철수'",
+        "let score = 0",
+        "const arr = []",
+        "var data (옛날 방식)"
+      ],
+      "answer": 1,
+      "explain": "`let`은 재할당이 가능합니다. `const`는 한 번 정하면 못 바꿉니다 (단, 객체/배열 안의 내용은 바꿀 수 있음). `var`는 옛날 방식이라 새 코드에서는 쓰지 마세요."
+    },
+    {
+      "id": "p2-01-q02",
+      "type": "mcq",
+      "prompt": "다음 코드의 결과는?\n\n```js\nconst fruits = [\"사과\", \"바나나\", \"포도\"]\nconsole.log(fruits[1])\n```",
+      "choices": ["\"사과\"", "\"바나나\"", "\"포도\"", "1"],
+      "answer": 1,
+      "explain": "배열 인덱스는 **0번부터** 시작합니다. `[0]`은 \"사과\", `[1]`은 \"바나나\", `[2]`는 \"포도\"."
+    },
+    {
+      "id": "p2-01-q03",
+      "type": "mcq",
+      "prompt": "사용자 100명의 정보를 저장한다면 어떤 자료구조가 좋을까요?",
+      "choices": [
+        "변수 100개 (user1, user2, ...)",
+        "배열 안에 객체들 ([{name, age}, {name, age}, ...])",
+        "객체 100개 (user1 = {...}, user2 = {...})",
+        "string 하나에 다 합치기"
+      ],
+      "answer": 1,
+      "explain": "같은 모양의 데이터가 여러 개 → **객체들의 배열**. 반복문으로 처리할 수 있고, 추가/삭제도 쉽습니다. 변수를 100개 만드는 건 관리 불가능."
+    },
+    {
+      "id": "p2-01-q04",
+      "type": "wordbank",
+      "prompt": "객체에서 'name' 값을 꺼내려면? (두 가지 방법 중 점 표기법)\n\n```js\nuser___name\n```",
+      "blanks": 1,
+      "bank": [".", "->", "::", "/"],
+      "answer": ["."],
+      "explain": "점 표기법(`user.name`)이 가장 흔합니다. 키가 변수에 들어있거나 특수문자가 있으면 대괄호 표기법(`user[\"name\"]`)도 가능."
+    },
+    {
+      "id": "p2-01-q05",
+      "type": "rubric",
+      "prompt": "다음 변수명 중 **vibe coding 결과물에서 좋은 이름**을 모두 고르세요.",
+      "items": [
+        { "label": "userList", "correct": true },
+        { "label": "isAdminUser", "correct": true },
+        { "label": "data", "correct": false },
+        { "label": "x", "correct": false },
+        { "label": "tempStuff", "correct": false }
+      ],
+      "explain": "좋은 이름 = **무엇을 담는지 한눈에 보임**. `userList`, `isAdminUser`처럼 의도가 드러나는 이름이 좋습니다. `data`, `x`, `tempStuff`는 코드 다시 보면 무엇이 들어있는지 모릅니다. AI에게 \"변수명을 의미가 드러나게 바꿔줘\"라고 자주 요청하세요."
+    }
+  ]
+}

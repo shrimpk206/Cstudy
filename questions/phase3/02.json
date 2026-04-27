@@ -1,0 +1,71 @@
+{
+  "lessonId": "phase3/02",
+  "title": "자주 나오는 에러 5종",
+  "version": 1,
+  "exercises": [
+    {
+      "id": "p3-02-q01",
+      "type": "mcq",
+      "prompt": "`TypeError: Cannot read properties of undefined (reading 'name')` — 가장 먼저 의심할 것은?",
+      "choices": [
+        "라이브러리 버그",
+        "객체가 undefined인데 .name을 꺼내려 함 — 옵셔널 체이닝/null 가드 필요",
+        "인터넷 연결 문제",
+        "브라우저 호환성"
+      ],
+      "answer": 1,
+      "explain": "TypeError의 99%는 **`undefined`/`null`인 값에 점 연산자**를 쓴 것. `user?.name` (옵셔널 체이닝) 또는 `if (user) { user.name }` (검사). API 응답이 가끔 빈 값으로 올 때 자주 발생."
+    },
+    {
+      "id": "p3-02-q02",
+      "type": "mcq",
+      "prompt": "`ReferenceError: useStat is not defined` — 가장 의심할 것은?",
+      "choices": [
+        "useStat이라는 라이브러리를 깔아야 함",
+        "useState 오타 — 's'가 빠짐",
+        "JavaScript 버전이 낮음",
+        "괄호가 안 맞음"
+      ],
+      "answer": 1,
+      "explain": "ReferenceError는 **그런 이름을 못 찾음**. 흔한 원인: 오타, import 누락, 스코프 문제. `useStat` → 거의 확실히 `useState` 오타."
+    },
+    {
+      "id": "p3-02-q03",
+      "type": "mcq",
+      "prompt": "`SyntaxError: Unexpected end of input`을 만났습니다. 가장 가능성 높은 원인은?",
+      "choices": [
+        "변수가 undefined",
+        "괄호/중괄호가 끝까지 안 닫힘",
+        "라이브러리 누락",
+        "권한 부족"
+      ],
+      "answer": 1,
+      "explain": "**Unexpected end of input** = \"파일 끝까지 읽었는데 뭔가 닫히지 않음\". 보통 `{`, `(`, `[`, 따옴표 짝이 안 맞음. 에디터의 자동 들여쓰기 어긋남으로 추적 가능."
+    },
+    {
+      "id": "p3-02-q04",
+      "type": "mcq",
+      "prompt": "`Cannot find module 'axios'` 에러. 가장 먼저 시도할 것은?",
+      "choices": [
+        "코드를 다시 짠다",
+        "`npm install axios` 실행",
+        "다른 라이브러리로 바꾼다",
+        "GitHub Issues 먼저 검색"
+      ],
+      "answer": 1,
+      "explain": "외부 라이브러리(상대경로 없음)를 못 찾으면 **설치 안 된 것**. `npm install axios`. 본인 파일이면 경로/대소문자/확장자 점검."
+    },
+    {
+      "id": "p3-02-q05",
+      "type": "rubric",
+      "prompt": "다음 중 **CORS 에러**의 특징을 모두 고르세요.",
+      "items": [
+        { "label": "브라우저에서 다른 도메인을 호출할 때 발생", "correct": true },
+        { "label": "프론트엔드 코드만 고쳐서는 해결 안 됨 (백엔드 또는 프록시 필요)", "correct": true },
+        { "label": "네트워크 끊김이 원인", "correct": false },
+        { "label": "JavaScript 문법 오류", "correct": false }
+      ],
+      "explain": "**CORS는 브라우저의 보안 정책**. 다른 도메인의 API를 직접 호출하면 막힙니다. 해결: (1) 백엔드에서 CORS 헤더 허용, (2) 본인 백엔드 통해 프록시. 프론트엔드 코드만으로는 해결 불가."
+    }
+  ]
+}

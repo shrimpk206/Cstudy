@@ -1,0 +1,67 @@
+{
+  "lessonId": "phase2/06",
+  "title": "라이브러리와 의존성",
+  "version": 1,
+  "exercises": [
+    {
+      "id": "p2-06-q01",
+      "type": "mcq",
+      "prompt": "`package.json`의 역할은?",
+      "choices": [
+        "프로젝트의 실제 코드 파일",
+        "프로젝트가 어떤 라이브러리에 의존하는지 적힌 명세서",
+        "다운로드된 라이브러리의 폴더",
+        "git 설정 파일"
+      ],
+      "answer": 1,
+      "explain": "`package.json`은 **의존성 명세서**. 어떤 라이브러리를 어느 버전으로 쓰는지 적혀 있음. 실제 코드는 `node_modules/`에 다운로드됨."
+    },
+    {
+      "id": "p2-06-q02",
+      "type": "mcq",
+      "prompt": "`dependencies`와 `devDependencies`의 차이는?",
+      "choices": [
+        "둘 다 같음",
+        "dependencies는 실행에 필요, devDependencies는 개발에만 필요",
+        "dependencies는 무료, devDependencies는 유료",
+        "dependencies는 새 거, devDependencies는 옛날 거"
+      ],
+      "answer": 1,
+      "explain": "**`dependencies`**: 운영(실행)에 꼭 필요한 라이브러리 (예: React, axios). **`devDependencies`**: 개발할 때만 필요 (테스트 도구, 타입 검사 등). 빌드 결과물에는 dev가 들어가지 않음."
+    },
+    {
+      "id": "p2-06-q03",
+      "type": "wordbank",
+      "prompt": "다른 사람이 만든 프로젝트를 받았습니다. 라이브러리 다운로드를 하려면?\n\n```\nnpm ___\n```",
+      "blanks": 1,
+      "bank": ["install", "download", "get", "import"],
+      "answer": ["install"],
+      "explain": "`npm install`은 `package.json`에 적힌 모든 의존성을 다운로드합니다. 짧게 `npm i`로도 됨. Python이면 `pip install -r requirements.txt`."
+    },
+    {
+      "id": "p2-06-q04",
+      "type": "mcq",
+      "prompt": "`\"axios\": \"^1.6.0\"`의 의미는?",
+      "choices": [
+        "정확히 1.6.0만",
+        "1.6.0 이상, 2.0.0 미만 (마이너 업데이트 자동)",
+        "1.6.0 이상, 1.7.0 미만 (패치만)",
+        "1.6.0보다 큰 모든 버전"
+      ],
+      "answer": 1,
+      "explain": "`^`는 **메이저 버전은 고정, 마이너/패치 자동 업데이트**. `^1.6.0`은 1.6.x, 1.7.x는 OK, 2.x.x는 안 됨. `~`는 패치만, 숫자만은 정확히 그 버전."
+    },
+    {
+      "id": "p2-06-q05",
+      "type": "rubric",
+      "prompt": "AI가 새 라이브러리를 추가하려고 합니다. 추가 전 확인할 것은?",
+      "items": [
+        { "label": "이미 깔려있는 라이브러리로 가능한가", "correct": true },
+        { "label": "표준 JS/Python 기능으로 가능한가", "correct": true },
+        { "label": "다운로드 수가 너무 적진 않은가 (보안)", "correct": true },
+        { "label": "라이브러리 이름이 멋있는가", "correct": false }
+      ],
+      "explain": "라이브러리는 의존성을 늘리고 보안 위험도 가져옵니다. **이미 있는 걸로 가능한지**, **표준 기능으로 안 되는지**, **유명한지** 먼저 확인. AI는 종종 마이너한 라이브러리를 추천하는데 이때 의심해야 함."
+    }
+  ]
+}

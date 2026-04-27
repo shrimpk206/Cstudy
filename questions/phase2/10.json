@@ -1,0 +1,64 @@
+{
+  "lessonId": "phase2/10",
+  "title": "클래스와 객체지향",
+  "version": 1,
+  "exercises": [
+    {
+      "id": "p2-10-q01",
+      "type": "mcq",
+      "prompt": "다음 코드의 결과는?\n\n```js\nclass Cat {\n  constructor(name) { this.name = name }\n  meow() { return this.name + ' 야옹' }\n}\nconst c = new Cat('나비')\nconsole.log(c.meow())\n```",
+      "choices": ["'야옹'", "'나비 야옹'", "에러", "undefined"],
+      "answer": 1,
+      "explain": "`new Cat('나비')`로 인스턴스 생성 → constructor에서 `this.name = '나비'`. `c.meow()` 호출 시 `this.name + ' 야옹'` → `'나비 야옹'`."
+    },
+    {
+      "id": "p2-10-q02",
+      "type": "wordbank",
+      "prompt": "클래스로부터 새 인스턴스를 만들 때 쓰는 키워드는?\n\n```js\nconst user = ___ User('철수')\n```",
+      "blanks": 1,
+      "bank": ["new", "create", "make", "init"],
+      "answer": ["new"],
+      "explain": "`new` 키워드가 인스턴스를 생성하고 constructor를 호출합니다. `new` 없이 부르면 보통 에러나 이상한 동작 (this가 undefined)."
+    },
+    {
+      "id": "p2-10-q03",
+      "type": "mcq",
+      "prompt": "vibe coding에서 클래스를 굳이 쓸 필요가 **없는** 경우는?",
+      "choices": [
+        "데이터베이스 연결처럼 상태를 가진 자원",
+        "단순히 데이터를 묶는 용도 (객체로 충분)",
+        "외부 라이브러리가 클래스를 제공할 때",
+        "게임 캐릭터처럼 고유 상태를 가진 객체"
+      ],
+      "answer": 1,
+      "explain": "**단순 데이터 묶음**은 그냥 객체(`{name, age}`)로 충분합니다. 클래스는 **상태 + 동작**이 함께 묶일 때 가치가 있습니다. AI는 종종 클래스를 과하게 만드는 경향이 있어 \"클래스 없이 다시 짜줘\"라고 요청해도 좋습니다."
+    },
+    {
+      "id": "p2-10-q04",
+      "type": "bugspot",
+      "prompt": "이 코드는 `this.name`이 undefined가 됩니다. 어느 줄이 문제일까요?",
+      "code": [
+        "class Button {",
+        "  constructor(name) { this.name = name }",
+        "  handleClick() {",
+        "    setTimeout(function() { console.log(this.name) }, 100)",
+        "  }",
+        "}"
+      ],
+      "answer": 3,
+      "explain": "4번째 줄의 **일반 함수 표현식 `function() { ... }`은 자기만의 `this`를 가집니다** → 클래스의 this가 아니게 됨. **화살표 함수 `() => console.log(this.name)`**으로 바꾸면 외부 this를 그대로 씁니다. 이건 vibe coding에서 가장 자주 만나는 함정 중 하나."
+    },
+    {
+      "id": "p2-10-q05",
+      "type": "rubric",
+      "prompt": "AI가 단순한 일에 클래스를 5개나 만들어왔습니다. 좋은 요청은?",
+      "items": [
+        { "label": "함수만으로 충분할지 다시 검토해서 단순화", "correct": true },
+        { "label": "상속 계층이 너무 깊으면 평탄하게(composition)", "correct": true },
+        { "label": "이대로 사용", "correct": false },
+        { "label": "클래스 이름을 짧게 줄여줘", "correct": false }
+      ],
+      "explain": "**과한 추상화**는 코드 복잡도를 키웁니다. AI는 종종 \"제대로\" 해보겠다고 클래스를 남발합니다. 가장 단순한 형태부터 시작하고, 필요할 때만 추상화를 추가하는 게 좋은 패턴."
+    }
+  ]
+}

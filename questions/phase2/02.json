@@ -1,0 +1,62 @@
+{
+  "lessonId": "phase2/02",
+  "title": "동작을 묶는 단위",
+  "version": 1,
+  "exercises": [
+    {
+      "id": "p2-02-q01",
+      "type": "mcq",
+      "prompt": "다음 함수 호출의 결과는?\n\n```js\nfunction add(a, b) {\n  return a + b\n}\nadd(3, 5)\n```",
+      "choices": ["3", "5", "8", "undefined"],
+      "answer": 2,
+      "explain": "`a=3, b=5`로 호출되어 `return 3 + 5` → 8. **인자(argument)** 두 개를 받아 **반환값(return value)**으로 합을 돌려줍니다."
+    },
+    {
+      "id": "p2-02-q02",
+      "type": "wordbank",
+      "prompt": "함수에서 결과를 호출자에게 돌려주는 키워드는?\n\n```js\nfunction double(x) {\n  ___ x * 2\n}\n```",
+      "blanks": 1,
+      "bank": ["return", "yield", "exit", "give"],
+      "answer": ["return"],
+      "explain": "`return`이 함수의 결과를 돌려줍니다. 빠뜨리면 함수는 `undefined`를 반환합니다."
+    },
+    {
+      "id": "p2-02-q03",
+      "type": "bugspot",
+      "prompt": "이 함수는 호출해도 결과가 항상 `undefined`입니다. 어느 줄이 문제인가요?",
+      "code": [
+        "function multiply(a, b) {",
+        "  const result = a * b",
+        "}",
+        "console.log(multiply(3, 4))"
+      ],
+      "answer": 1,
+      "explain": "2번째 줄에서 `result`를 계산했지만 `return`이 빠짐. 함수는 `undefined`를 돌려줍니다. `return result`를 추가해야 함."
+    },
+    {
+      "id": "p2-02-q04",
+      "type": "mcq",
+      "prompt": "다음과 같은 짧은 함수를 한 줄로 줄이려면? (화살표 함수)\n\n```js\nfunction triple(x) { return x * 3 }\n```",
+      "choices": [
+        "const triple = x => x * 3",
+        "const triple => x * 3",
+        "const triple = (x) { x * 3 }",
+        "function triple => x * 3"
+      ],
+      "answer": 0,
+      "explain": "화살표 함수: `(인자) => 반환값`. 인자 하나면 괄호 생략 가능 (`x => x*3`). 본문이 한 줄이면 `{}`와 `return` 생략 가능."
+    },
+    {
+      "id": "p2-02-q05",
+      "type": "rubric",
+      "prompt": "AI가 200줄짜리 함수 하나를 만들어왔을 때 좋은 요청은?",
+      "items": [
+        { "label": "이 함수를 더 작은 함수 3-4개로 쪼개줘", "correct": true },
+        { "label": "각 함수는 한 가지 일만 하게", "correct": true },
+        { "label": "그냥 그대로 둬", "correct": false },
+        { "label": "함수명을 더 짧게 줄여줘", "correct": false }
+      ],
+      "explain": "긴 함수는 읽기/수정/디버깅이 어렵습니다. **한 가지 일만 하는** 작은 함수로 쪼개는 게 좋은 코드의 핵심. 이름 줄이기는 오히려 가독성을 해칩니다."
+    }
+  ]
+}

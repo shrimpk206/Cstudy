@@ -1,0 +1,64 @@
+{
+  "lessonId": "phase2/07",
+  "title": "API와 HTTP",
+  "version": 1,
+  "exercises": [
+    {
+      "id": "p2-07-q01",
+      "type": "mcq",
+      "prompt": "사용자 정보를 **새로 등록**하려면 어떤 HTTP 메서드를 쓸까요?",
+      "choices": ["GET", "POST", "DELETE", "PUT"],
+      "answer": 1,
+      "explain": "**POST**: 새로 만들기. **GET**: 가져오기. **PUT/PATCH**: 수정. **DELETE**: 삭제. 기억: 가만히 가져오기 GET, 만들기 POST."
+    },
+    {
+      "id": "p2-07-q02",
+      "type": "mcq",
+      "prompt": "응답 코드 **403**이 나왔다. 가장 가까운 의미는?",
+      "choices": [
+        "성공",
+        "URL이 틀림",
+        "로그인은 됐지만 이 자원에 권한 없음",
+        "서버가 터짐"
+      ],
+      "answer": 2,
+      "explain": "**403 Forbidden**: 인증은 됐지만 권한이 없음. **401**: 로그인 자체가 안 됨. **404**: 해당 자원이 없음. **500**: 서버 잘못. 4xx는 우리 잘못, 5xx는 서버 잘못."
+    },
+    {
+      "id": "p2-07-q03",
+      "type": "wordbank",
+      "prompt": "API 응답을 JavaScript 객체로 변환하려면?\n\n```js\nconst response = await fetch(url)\nconst data = await response.___()\n```",
+      "blanks": 1,
+      "bank": ["json", "text", "parse", "data"],
+      "answer": ["json"],
+      "explain": "`response.json()`이 응답 본문을 파싱해서 객체로 줍니다. `text()`는 그냥 글자로. 둘 다 Promise를 반환하므로 `await` 필요."
+    },
+    {
+      "id": "p2-07-q04",
+      "type": "bugspot",
+      "prompt": "이 코드에는 보안 문제가 있습니다. 어느 줄이 가장 위험한가요?",
+      "code": [
+        "// 프론트엔드 React 코드",
+        "const apiKey = \"sk-proj-Abc123Secret\"",
+        "fetch('/api/data', {",
+        "  headers: { Authorization: 'Bearer ' + apiKey }",
+        "})"
+      ],
+      "answer": 1,
+      "explain": "프론트엔드 코드에 **API 키를 박아넣음**. 빌드 결과물은 사용자 브라우저에 다 노출됩니다 → 키가 통째로 털림. 시크릿 키는 백엔드에서만 사용해야 합니다."
+    },
+    {
+      "id": "p2-07-q05",
+      "type": "reorder",
+      "prompt": "API에서 사용자 정보를 안전하게 가져오는 흐름은?",
+      "lines": [
+        "const response = await fetch('/api/users/1')",
+        "if (!response.ok) throw new Error('실패')",
+        "const data = await response.json()",
+        "console.log(data.name)"
+      ],
+      "answer": [0, 1, 2, 3],
+      "explain": "1) 요청 → 2) 응답 OK 검사 → 3) JSON 파싱 → 4) 사용. 2번을 빼먹으면 404/500 같은 실패 응답을 정상으로 처리해서 이상한 버그가 납니다."
+    }
+  ]
+}
